@@ -12,10 +12,12 @@ document.addEventListener("DOMContentLoaded", function(){
         }else{
            let gameType = this.getAttribute("data-type");
           alert(`you clicked ${gameType}`)
+          runGame(gameType)
 
         }
       })
   }
+  runGame("addition");
 })
 
 /**
@@ -24,11 +26,19 @@ document.addEventListener("DOMContentLoaded", function(){
  */
 
 // this refers to the button that was clicked, it gets attribute, if it is submit, it has the function. 
-function runGame(){
+function runGame(gameType){
   //random number between 1 and 25, math.floor egész számmá kerekíti, +1 hogy ne nulláról induljon, hanem 1ről
 // Creates two random numbers between 1 and 25
 let num1=Math.floor(Math.random()*25)+1;
 let num2=Math.floor(Math.random()*25)+1;
+
+ if (gameType === "addition") {
+        displayAdditionQuestion(num1, num2);
+    } else {
+        alert(`Unknown game type: ${gameType}`);
+        throw `Unknown game type: ${gameType}. Aborting!`;
+    }
+
 }
 function checkAnswer(){
 
@@ -46,7 +56,9 @@ function incrementWrongAnswer(){
 
 }
 function displayAdditionQuestion(operand1, operand2){
-
+document.getElementById('operand1').textContent = operand1;
+    document.getElementById('operand2').textContent = operand2;
+    document.getElementById('operator').textContent = "+";
 }
 function displaySubtractQuestion(){
 
