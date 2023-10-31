@@ -17,6 +17,13 @@ document.addEventListener("DOMContentLoaded", function(){
         }
       })
   }
+//enter will be same as clicking on submit
+      document.getElementById("answer-box").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    });
+
   runGame("addition");
 })
 
@@ -27,6 +34,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
 // this refers to the button that was clicked, it gets attribute, if it is submit, it has the function. 
 function runGame(gameType){
+// the answer-box will be empty after we submit an answer, plus cursor is ready
+      document.getElementById("answer-box").value = "";
+    document.getElementById("answer-box").focus();
   //random number between 1 and 25, math.floor egész számmá kerekíti, +1 hogy ne nulláról induljon, hanem 1ről
 // Creates two random numbers between 1 and 25
 let num1=Math.floor(Math.random()*25)+1;
